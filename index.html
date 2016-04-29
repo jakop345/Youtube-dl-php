@@ -1,144 +1,104 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=640" />
-
-    <link rel="stylesheet" href="stylesheets/core.css" media="screen"/>
-    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)"/>
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
-
-    <script type="text/javascript" src="javascripts/modernizr.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
-    <script type="text/javascript">
-      $(document).ready(function () {
-        $('#main_content').headsmart()
-      })
-    </script>
-    <title>Youtube-dl-php by chellem</title>
+    <meta charset="UTF-8">
+    <title>Youtube-dl-php by labzone</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
-
   <body>
-    <a id="forkme_banner" href="https://github.com/chellem/Youtube-dl-php">View on GitHub</a>
-    <div class="shell">
+    <section class="page-header">
+      <h1 class="project-name">Youtube-dl-php</h1>
+      <h2 class="project-tagline">Download Youtube video  from PHP</h2>
+      <a href="https://github.com/labzone/Youtube-dl-php" class="btn">View on GitHub</a>
+      <a href="https://github.com/labzone/Youtube-dl-php/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/labzone/Youtube-dl-php/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-      <header>
-        <span class="ribbon-outer">
-          <span class="ribbon-inner">
-            <h1>Youtube-dl-php</h1>
-            <h2>Download Youtube video  from PHP</h2>
-          </span>
-          <span class="left-tail"></span>
-          <span class="right-tail"></span>
-        </span>
-      </header>
-
-      <section id="downloads">
-        <span class="inner">
-          <a href="https://github.com/chellem/Youtube-dl-php/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/chellem/Youtube-dl-php/tarball/master" class="tgz"><em>download</em> .TGZ</a>
-        </span>
-      </section>
-
-
-      <span class="banner-fix"></span>
-
-
-      <section id="main_content">
-        <h1>
-<a name="youtube-dl-php" class="anchor" href="#youtube-dl-php"><span class="octicon octicon-link"></span></a>YouTube-dl-php</h1>
+    <section class="main-content">
+      <h1>
+<a id="youtube-dl-php" class="anchor" href="#youtube-dl-php" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>YouTube-dl-php</h1>
 
 <p>This library is a PHP implementation of <a href="https://github.com/rg3/youtube-dl">Youtube-dl</a> for downloading video from Youtube and other sites.</p>
 
 <h2>
-<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
 
 <p><a href="https://github.com/rg3/youtube-dl">Youtube-dl</a> has must be installed first.</p>
 
 <p>Installation using <a href="https://getcomposer.org">Composer</a>:</p>
 
-<div class="highlight highlight-json"><pre><span class="p">{</span>
-    <span class="nt">"require"</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">"chellem/youtube-downloader"</span><span class="p">:</span> <span class="s2">"dev-master"</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
+<div class="highlight highlight-source-json"><pre>{
+    <span class="pl-s"><span class="pl-pds">"</span>require<span class="pl-pds">"</span></span>: {
+        <span class="pl-s"><span class="pl-pds">"</span>chellem/youtube-downloader<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>dev-master<span class="pl-pds">"</span></span>
+    }
+}</pre></div>
 
 <h2>
-<a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples</h2>
+<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Examples</h2>
 
 <h3>
-<a name="download" class="anchor" href="#download"><span class="octicon octicon-link"></span></a>Download</h3>
+<a id="download" class="anchor" href="#download" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Download</h3>
 
-<div class="highlight highlight-php"><pre><span class="k">use</span> <span class="nx">Youtubedl\Youtubedl</span><span class="p">;</span>
-
-<span class="nv">$youtubedl</span><span class="o">=</span><span class="k">new</span> <span class="nx">Youtubedl</span><span class="p">();</span>
-<span class="nv">$youtubedl</span><span class="o">-&gt;</span><span class="na">getFilesystemOption</span><span class="p">()</span>
-          <span class="o">-&gt;</span><span class="na">setOutput</span><span class="p">(</span><span class="s2">"</span><span class="se">\"</span><span class="s2">/tmp/%(title)s.%(ext)s</span><span class="se">\"</span><span class="s2">"</span><span class="p">);</span>
-<span class="nv">$youtubedl</span><span class="o">-&gt;</span><span class="na">download</span><span class="p">(</span><span class="s1">'BaW_jenozKc'</span><span class="p">);</span>
-</pre></div>
-
-<h3>
-<a name="multiple-download" class="anchor" href="#multiple-download"><span class="octicon octicon-link"></span></a>Multiple Download</h3>
-
-<div class="highlight highlight-php"><pre><span class="k">use</span> <span class="nx">Youtubedl\Youtubedl</span><span class="p">;</span>
-
-<span class="nv">$youtubedl</span><span class="o">=</span><span class="k">new</span> <span class="nx">Youtubedl</span><span class="p">();</span>
-<span class="nv">$youtubedl</span><span class="o">-&gt;</span><span class="na">getFilesystemOption</span><span class="p">()</span>
-          <span class="o">-&gt;</span><span class="na">setOutput</span><span class="p">(</span><span class="s2">"</span><span class="se">\"</span><span class="s2">/tmp/%(title)s.%(ext)s</span><span class="se">\"</span><span class="s2">"</span><span class="p">);</span>
-<span class="nv">$youtubedl</span><span class="o">-&gt;</span><span class="na">download</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">'BaW_jenozKc'</span><span class="p">,</span><span class="s1">'dOibtqWo6z4'</span><span class="p">));</span>
-</pre></div>
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-k">use</span> <span class="pl-c1">Youtubedl\Youtubedl</span>;</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$youtubedl</span><span class="pl-k">=</span><span class="pl-k">new</span> <span class="pl-c1">Youtubedl</span>();</span>
+<span class="pl-s1"><span class="pl-smi">$youtubedl</span><span class="pl-k">-&gt;</span>getFilesystemOption()</span>
+<span class="pl-s1">          <span class="pl-k">-&gt;</span>setOutput(<span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\"</span>/tmp/%(title)s.%(ext)s<span class="pl-cce">\"</span><span class="pl-pds">"</span></span>);</span>
+<span class="pl-s1"><span class="pl-smi">$youtubedl</span><span class="pl-k">-&gt;</span>download(<span class="pl-s"><span class="pl-pds">'</span>BaW_jenozKc<span class="pl-pds">'</span></span>);</span></pre></div>
 
 <h3>
-<a name="extractor-list" class="anchor" href="#extractor-list"><span class="octicon octicon-link"></span></a>Extractor List</h3>
+<a id="multiple-download" class="anchor" href="#multiple-download" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Multiple Download</h3>
 
-<div class="highlight highlight-php"><pre><span class="k">use</span> <span class="nx">Youtubedl\Youtubedl</span><span class="p">;</span>
-
-<span class="nv">$youtubedl</span><span class="o">=</span><span class="k">new</span> <span class="nx">Youtubedl</span><span class="p">();</span>
-<span class="nv">$youtubedl</span><span class="o">-&gt;</span><span class="na">getOption</span><span class="p">()</span>
-          <span class="o">-&gt;</span><span class="na">getExtractors</span><span class="p">();</span>
-<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$youtubedl</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">());</span>
-</pre></div>
-
-<h3>
-<a name="extractor-descriptions" class="anchor" href="#extractor-descriptions"><span class="octicon octicon-link"></span></a>Extractor Descriptions</h3>
-
-<div class="highlight highlight-php"><pre><span class="k">use</span> <span class="nx">Youtubedl\Youtubedl</span><span class="p">;</span>
-
-<span class="nv">$youtubedl</span><span class="o">=</span><span class="k">new</span> <span class="nx">Youtubedl</span><span class="p">();</span>
-<span class="nv">$youtubedl</span><span class="o">-&gt;</span><span class="na">getOption</span><span class="p">()</span>
-          <span class="o">-&gt;</span><span class="na">getExtractorDescriptions</span><span class="p">();</span>
-<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$youtubedl</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">());</span>
-</pre></div>
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-k">use</span> <span class="pl-c1">Youtubedl\Youtubedl</span>;</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$youtubedl</span><span class="pl-k">=</span><span class="pl-k">new</span> <span class="pl-c1">Youtubedl</span>();</span>
+<span class="pl-s1"><span class="pl-smi">$youtubedl</span><span class="pl-k">-&gt;</span>getFilesystemOption()</span>
+<span class="pl-s1">          <span class="pl-k">-&gt;</span>setOutput(<span class="pl-s"><span class="pl-pds">"</span><span class="pl-cce">\"</span>/tmp/%(title)s.%(ext)s<span class="pl-cce">\"</span><span class="pl-pds">"</span></span>);</span>
+<span class="pl-s1"><span class="pl-smi">$youtubedl</span><span class="pl-k">-&gt;</span>download(<span class="pl-c1">array</span>(<span class="pl-s"><span class="pl-pds">'</span>BaW_jenozKc<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>dOibtqWo6z4<span class="pl-pds">'</span></span>));</span></pre></div>
 
 <h3>
-<a name="user-agent" class="anchor" href="#user-agent"><span class="octicon octicon-link"></span></a>User Agent</h3>
+<a id="extractor-list" class="anchor" href="#extractor-list" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Extractor List</h3>
 
-<div class="highlight highlight-php"><pre><span class="k">use</span> <span class="nx">Youtubedl\Youtubedl</span><span class="p">;</span>
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-k">use</span> <span class="pl-c1">Youtubedl\Youtubedl</span>;</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$youtubedl</span><span class="pl-k">=</span><span class="pl-k">new</span> <span class="pl-c1">Youtubedl</span>();</span>
+<span class="pl-s1"><span class="pl-smi">$youtubedl</span><span class="pl-k">-&gt;</span>getOption()</span>
+<span class="pl-s1">          <span class="pl-k">-&gt;</span>getExtractors();</span>
+<span class="pl-s1"><span class="pl-c1">var_dump</span>(<span class="pl-smi">$youtubedl</span><span class="pl-k">-&gt;</span>execute());</span></pre></div>
 
-<span class="nv">$youtubedl</span><span class="o">=</span><span class="k">new</span> <span class="nx">Youtubedl</span><span class="p">();</span>
-<span class="nv">$youtubedl</span><span class="o">-&gt;</span><span class="na">getOption</span><span class="p">()</span>
-          <span class="o">-&gt;</span><span class="na">setUserAgent</span><span class="p">(</span><span class="s1">'Opera/9.80 (Windows NT 6.0) Presto/2.12.388 Version/12.14'</span><span class="p">)</span>   
-          <span class="o">-&gt;</span><span class="na">getUserAgent</span><span class="p">();</span>
-<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$youtubedl</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">());</span>
-</pre></div>
-      </section>
+<h3>
+<a id="extractor-descriptions" class="anchor" href="#extractor-descriptions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Extractor Descriptions</h3>
 
-      <footer>
-        <span class="ribbon-outer">
-          <span class="ribbon-inner">
-            <p>this project by <a href="https://github.com/chellem">chellem</a> can be found on <a href="https://github.com/chellem/Youtube-dl-php">GitHub</a></p>
-          </span>
-          <span class="left-tail"></span>
-          <span class="right-tail"></span>
-        </span>
-        <p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
-        <span class="octocat"></span>
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-k">use</span> <span class="pl-c1">Youtubedl\Youtubedl</span>;</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$youtubedl</span><span class="pl-k">=</span><span class="pl-k">new</span> <span class="pl-c1">Youtubedl</span>();</span>
+<span class="pl-s1"><span class="pl-smi">$youtubedl</span><span class="pl-k">-&gt;</span>getOption()</span>
+<span class="pl-s1">          <span class="pl-k">-&gt;</span>getExtractorDescriptions();</span>
+<span class="pl-s1"><span class="pl-c1">var_dump</span>(<span class="pl-smi">$youtubedl</span><span class="pl-k">-&gt;</span>execute());</span></pre></div>
+
+<h3>
+<a id="user-agent" class="anchor" href="#user-agent" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>User Agent</h3>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-k">use</span> <span class="pl-c1">Youtubedl\Youtubedl</span>;</span>
+<span class="pl-s1"></span>
+<span class="pl-s1"><span class="pl-smi">$youtubedl</span><span class="pl-k">=</span><span class="pl-k">new</span> <span class="pl-c1">Youtubedl</span>();</span>
+<span class="pl-s1"><span class="pl-smi">$youtubedl</span><span class="pl-k">-&gt;</span>getOption()</span>
+<span class="pl-s1">          <span class="pl-k">-&gt;</span>setUserAgent(<span class="pl-s"><span class="pl-pds">'</span>Opera/9.80 (Windows NT 6.0) Presto/2.12.388 Version/12.14<span class="pl-pds">'</span></span>)   </span>
+<span class="pl-s1">          <span class="pl-k">-&gt;</span>getUserAgent();</span>
+<span class="pl-s1"><span class="pl-c1">var_dump</span>(<span class="pl-smi">$youtubedl</span><span class="pl-k">-&gt;</span>execute());</span></pre></div>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/labzone/Youtube-dl-php">Youtube-dl-php</a> is maintained by <a href="https://github.com/labzone">labzone</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
       </footer>
 
-    </div>
+    </section>
 
-    
+  
   </body>
 </html>
